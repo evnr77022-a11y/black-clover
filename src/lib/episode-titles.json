@@ -1,0 +1,682 @@
+[
+  {
+    "number": 1,
+    "title": "Asta and Yuno"
+  },
+  {
+    "number": 2,
+    "title": "The Boys' Oath"
+  },
+  {
+    "number": 3,
+    "title": "To the Royal Capital of the Clover Kingdom!"
+  },
+  {
+    "number": 4,
+    "title": "The Magic Knights Entrance Exam"
+  },
+  {
+    "number": 5,
+    "title": "The Path to the Wizard King"
+  },
+  {
+    "number": 6,
+    "title": "The Black Bulls"
+  },
+  {
+    "number": 7,
+    "title": "The Other New Recruit"
+  },
+  {
+    "number": 8,
+    "title": "Go! Go! First Mission"
+  },
+  {
+    "number": 9,
+    "title": "Beasts"
+  },
+  {
+    "number": 10,
+    "title": "Those Who Protect"
+  },
+  {
+    "number": 11,
+    "title": "What Happened on a Certain Day in the Castle Town"
+  },
+  {
+    "number": 12,
+    "title": "The Wizard King Saw"
+  },
+  {
+    "number": 13,
+    "title": "The Wizard King Saw, Continued"
+  },
+  {
+    "number": 14,
+    "title": "Dungeon"
+  },
+  {
+    "number": 15,
+    "title": "The Diamond Mage"
+  },
+  {
+    "number": 16,
+    "title": "Friends"
+  },
+  {
+    "number": 17,
+    "title": "Destroyer"
+  },
+  {
+    "number": 18,
+    "title": "Memories of You"
+  },
+  {
+    "number": 19,
+    "title": "Destruction and Salvation"
+  },
+  {
+    "number": 20,
+    "title": "Assembly at the Royal Capital"
+  },
+  {
+    "number": 21,
+    "title": "Capital Riot"
+  },
+  {
+    "number": 22,
+    "title": "Wild Magic Dance"
+  },
+  {
+    "number": 23,
+    "title": "The Crimson Lion King"
+  },
+  {
+    "number": 24,
+    "title": "Blackout"
+  },
+  {
+    "number": 25,
+    "title": "Adversity"
+  },
+  {
+    "number": 26,
+    "title": "Wounded Beasts"
+  },
+  {
+    "number": 27,
+    "title": "Light"
+  },
+  {
+    "number": 28,
+    "title": "The One I've Set My Heart On"
+  },
+  {
+    "number": 29,
+    "title": "Path"
+  },
+  {
+    "number": 30,
+    "title": "The Mirror Mage"
+  },
+  {
+    "number": 31,
+    "title": "Pursuit Over the Snow"
+  },
+  {
+    "number": 32,
+    "title": "Three-Leaf Sprouts"
+  },
+  {
+    "number": 33,
+    "title": "To Help Somebody Someday"
+  },
+  {
+    "number": 34,
+    "title": "Light Magic vs. Dark Magic"
+  },
+  {
+    "number": 35,
+    "title": "The Light of Judgment"
+  },
+  {
+    "number": 36,
+    "title": "Three Eyes"
+  },
+  {
+    "number": 37,
+    "title": "The One With No Magic"
+  },
+  {
+    "number": 38,
+    "title": "The Magic Knights Captain Conference"
+  },
+  {
+    "number": 39,
+    "title": "Three-Leaf Salute"
+  },
+  {
+    "number": 40,
+    "title": "A Black Beach Story"
+  },
+  {
+    "number": 41,
+    "title": "The Water Girl Grows Up"
+  },
+  {
+    "number": 42,
+    "title": "The Underwater Temple"
+  },
+  {
+    "number": 43,
+    "title": "Temple Battle Royale"
+  },
+  {
+    "number": 44,
+    "title": "The Pointlessly Direct Fireball and the Wild Lightning"
+  },
+  {
+    "number": 45,
+    "title": "The Guy Who Doesn't Know When to Quit"
+  },
+  {
+    "number": 46,
+    "title": "Awakening"
+  },
+  {
+    "number": 47,
+    "title": "The Only Weapon"
+  },
+  {
+    "number": 48,
+    "title": "Despair vs. Hope"
+  },
+  {
+    "number": 49,
+    "title": "Beyond Limits"
+  },
+  {
+    "number": 50,
+    "title": "End of the Battle, End of Despair"
+  },
+  {
+    "number": 51,
+    "title": "Proof of Rightness"
+  },
+  {
+    "number": 52,
+    "title": "Whoever's Strongest Wins"
+  },
+  {
+    "number": 53,
+    "title": "Behind the Mask"
+  },
+  {
+    "number": 54,
+    "title": "Never Again"
+  },
+  {
+    "number": 55,
+    "title": "The Man Named Fanzell"
+  },
+  {
+    "number": 56,
+    "title": "The Man Named Fanzell, Continued"
+  },
+  {
+    "number": 57,
+    "title": "Infiltration"
+  },
+  {
+    "number": 58,
+    "title": "Battlefield Decision"
+  },
+  {
+    "number": 59,
+    "title": "Flames of Hatred"
+  },
+  {
+    "number": 60,
+    "title": "Defectors' Atonement"
+  },
+  {
+    "number": 61,
+    "title": "The Promised World"
+  },
+  {
+    "number": 62,
+    "title": "Those Who Boost Each Other Up"
+  },
+  {
+    "number": 63,
+    "title": "Not in the Slightest"
+  },
+  {
+    "number": 64,
+    "title": "The Red Thread of Fate"
+  },
+  {
+    "number": 65,
+    "title": "I'm Home"
+  },
+  {
+    "number": 66,
+    "title": "The Eye of the Midnight Sun's Secret"
+  },
+  {
+    "number": 67,
+    "title": "A Fun Festival Double Date"
+  },
+  {
+    "number": 68,
+    "title": "Battle to the Death?! Yami vs. Jack"
+  },
+  {
+    "number": 69,
+    "title": "The Briar Maiden's Melancholy"
+  },
+  {
+    "number": 70,
+    "title": "Two New Stars"
+  },
+  {
+    "number": 71,
+    "title": "The Uncrowned, Undefeated Lioness"
+  },
+  {
+    "number": 72,
+    "title": "Saint Elmo's Fire"
+  },
+  {
+    "number": 73,
+    "title": "The Royal Knights Selection Test"
+  },
+  {
+    "number": 74,
+    "title": "Flower of Resolution"
+  },
+  {
+    "number": 75,
+    "title": "Fierce Battle"
+  },
+  {
+    "number": 76,
+    "title": "Mage X"
+  },
+  {
+    "number": 77,
+    "title": "Bad Blood"
+  },
+  {
+    "number": 78,
+    "title": "Peasant Trap"
+  },
+  {
+    "number": 79,
+    "title": "Mister Delinquent vs. Muscle Brains"
+  },
+  {
+    "number": 80,
+    "title": "Special Little Brother vs. Failed Big Brother"
+  },
+  {
+    "number": 81,
+    "title": "The Life of a Certain Man"
+  },
+  {
+    "number": 82,
+    "title": "Petit Clover! The Nightmarish Charmy SP!"
+  },
+  {
+    "number": 83,
+    "title": "Burn It Into You"
+  },
+  {
+    "number": 84,
+    "title": "The Victors"
+  },
+  {
+    "number": 85,
+    "title": "Together in the Bath"
+  },
+  {
+    "number": 86,
+    "title": "Yami and Vangeance"
+  },
+  {
+    "number": 87,
+    "title": "Formation of the Royal Knights"
+  },
+  {
+    "number": 88,
+    "title": "Storming the Eye of the Midnight Sun's Hideout!!!"
+  },
+  {
+    "number": 89,
+    "title": "The Black Bulls' Hideout"
+  },
+  {
+    "number": 90,
+    "title": "Crazy Magic Battle"
+  },
+  {
+    "number": 91,
+    "title": "Mereoleona vs. Raia the Disloyal"
+  },
+  {
+    "number": 92,
+    "title": "The Wizard King vs. the Leader of the Eye of the Midnight Sun"
+  },
+  {
+    "number": 93,
+    "title": "Julius Novachrono"
+  },
+  {
+    "number": 94,
+    "title": "New Future"
+  },
+  {
+    "number": 95,
+    "title": "Reincarnation"
+  },
+  {
+    "number": 96,
+    "title": "The Black Bulls Captain vs. the Crimson Wild Rose"
+  },
+  {
+    "number": 97,
+    "title": "Overwhelming Disadvantage"
+  },
+  {
+    "number": 98,
+    "title": "The Sleeping Lion"
+  },
+  {
+    "number": 99,
+    "title": "The Desperate Path Toward Survival"
+  },
+  {
+    "number": 100,
+    "title": "We Won't Lose to You"
+  },
+  {
+    "number": 101,
+    "title": "The Lives of the Village in the Sticks"
+  },
+  {
+    "number": 102,
+    "title": "Two Miracles"
+  },
+  {
+    "number": 103,
+    "title": "Release from Misfortune"
+  },
+  {
+    "number": 104,
+    "title": "Lightning of Rage vs. Friends"
+  },
+  {
+    "number": 105,
+    "title": "Smiles, Tears"
+  },
+  {
+    "number": 106,
+    "title": "Path of Revenge, Path of Atonement"
+  },
+  {
+    "number": 107,
+    "title": "The Battle for Clover Castle"
+  },
+  {
+    "number": 108,
+    "title": "Battlefield Dancer"
+  },
+  {
+    "number": 109,
+    "title": "Spatial Mage Brothers"
+  },
+  {
+    "number": 110,
+    "title": "The Raging Bull Joins the Showdown!!"
+  },
+  {
+    "number": 111,
+    "title": "The Eyes in the Mirror"
+  },
+  {
+    "number": 112,
+    "title": "Humans Who Can Be Trusted"
+  },
+  {
+    "number": 113,
+    "title": "Storming the Shadow Palace"
+  },
+  {
+    "number": 114,
+    "title": "The Final Invaders"
+  },
+  {
+    "number": 115,
+    "title": "Mastermind"
+  },
+  {
+    "number": 116,
+    "title": "The Ultimate Natural Enemy"
+  },
+  {
+    "number": 117,
+    "title": "Breaking the Seal"
+  },
+  {
+    "number": 118,
+    "title": "A Reunion Across Time and Space"
+  },
+  {
+    "number": 119,
+    "title": "The Final Attack"
+  },
+  {
+    "number": 120,
+    "title": "Dawn"
+  },
+  {
+    "number": 121,
+    "title": "Three Problems"
+  },
+  {
+    "number": 122,
+    "title": "As Pitch Black as It Gets"
+  },
+  {
+    "number": 123,
+    "title": "Nero Reminisces... Part One"
+  },
+  {
+    "number": 124,
+    "title": "Nero Reminisces... Part Two"
+  },
+  {
+    "number": 125,
+    "title": "Return"
+  },
+  {
+    "number": 126,
+    "title": "The Blue Rose's Confession"
+  },
+  {
+    "number": 127,
+    "title": "Clues"
+  },
+  {
+    "number": 128,
+    "title": "To the Heart Kingdom!"
+  },
+  {
+    "number": 129,
+    "title": "Devil Megicula"
+  },
+  {
+    "number": 130,
+    "title": "The New Magic Knight Captain Conference"
+  },
+  {
+    "number": 131,
+    "title": "A New Resolve"
+  },
+  {
+    "number": 132,
+    "title": "The Lion Awakens"
+  },
+  {
+    "number": 133,
+    "title": "The Lion Awakens, Continued"
+  },
+  {
+    "number": 134,
+    "title": "Those Who Have Been Gathered"
+  },
+  {
+    "number": 135,
+    "title": "The One Who Has My Heart, My Mind, and Soul"
+  },
+  {
+    "number": 136,
+    "title": "A Black Deep-Sea Story"
+  },
+  {
+    "number": 137,
+    "title": "Charmy's Century of Hunger, Gordon's Millennium of Loneliness"
+  },
+  {
+    "number": 138,
+    "title": "In Zara's Footsteps"
+  },
+  {
+    "number": 139,
+    "title": "A Witch's Homecoming"
+  },
+  {
+    "number": 140,
+    "title": "A Favor for Julius"
+  },
+  {
+    "number": 141,
+    "title": "The Golden Family"
+  },
+  {
+    "number": 142,
+    "title": "Those Remaining"
+  },
+  {
+    "number": 143,
+    "title": "The Tilted Scale"
+  },
+  {
+    "number": 144,
+    "title": "Those Who Wish for the Devil's Demise"
+  },
+  {
+    "number": 145,
+    "title": "Rescue"
+  },
+  {
+    "number": 146,
+    "title": "Those Who Worship the Devil"
+  },
+  {
+    "number": 147,
+    "title": "Prepared to Die"
+  },
+  {
+    "number": 148,
+    "title": "Becoming the Light That Shines Through the Darkness"
+  },
+  {
+    "number": 149,
+    "title": "Two Things We Need to Find"
+  },
+  {
+    "number": 150,
+    "title": "The Maidens' Challenge"
+  },
+  {
+    "number": 151,
+    "title": "Clash! The Battle of the Magic Knights Squad Captains"
+  },
+  {
+    "number": 152,
+    "title": "To Tomorrow!"
+  },
+  {
+    "number": 153,
+    "title": "The Chosen Ones"
+  },
+  {
+    "number": 154,
+    "title": "Vice Captain Langris Vaude"
+  },
+  {
+    "number": 155,
+    "title": "The 5 Spirit Guardians"
+  },
+  {
+    "number": 156,
+    "title": "Awakening Powers"
+  },
+  {
+    "number": 157,
+    "title": "Five-Leaf Clover"
+  },
+  {
+    "number": 158,
+    "title": "The Beginning of Hope and Despair"
+  },
+  {
+    "number": 159,
+    "title": "Quiet Lakes and Forest Shadows"
+  },
+  {
+    "number": 160,
+    "title": "The Messenger from the Spade Kingdom"
+  },
+  {
+    "number": 161,
+    "title": "Zenon's Power"
+  },
+  {
+    "number": 162,
+    "title": "The Great War Breaks Out"
+  },
+  {
+    "number": 163,
+    "title": "Dante vs. the Captain of the Black Bulls"
+  },
+  {
+    "number": 164,
+    "title": "Battlefield: Heart Kingdom"
+  },
+  {
+    "number": 165,
+    "title": "Water Crusade"
+  },
+  {
+    "number": 166,
+    "title": "Captain: Yami Sukehiro"
+  },
+  {
+    "number": 167,
+    "title": "Black Oath"
+  },
+  {
+    "number": 168,
+    "title": "Stirrings of the Strongest"
+  },
+  {
+    "number": 169,
+    "title": "The Devil-Binding Ritual"
+  },
+  {
+    "number": 170,
+    "title": "The Faraway Future"
+  }
+]

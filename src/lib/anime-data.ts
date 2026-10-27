@@ -1,3 +1,5 @@
+import sources from "@/lib/episode-sources.json";
+import titles from "@/lib/episode-titles.json";
 export type ArcId = "exam" | "seabed" | "elf" | "heart-spade" | "other";
 
 export const ARCS: { id: Exclude<ArcId, "other">; ar: string; en: string; from: number; to: number }[] = [
@@ -16,19 +18,17 @@ export function arcOf(ep: number): ArcId {
 export const EPISODES = Array.from({ length: TOTAL_EPISODES }, (_, i) => ({
   number: i + 1,
   arc: arcOf(i + 1),
+  title: titles.find((row) => row.number === i + 1)?.title ?? "Black Clover",
+  url: sources.find((row) => row.number === i + 1)?.url,
 }));
 
-/** Placeholder stream — replace with your licensed episode sources. */
-export const SAMPLE_VIDEO =
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
-
 export const BATTLES = [
-  { ep: 10, ar: "أستا ضد يونو — النهائي", en: "Asta vs Yuno" },
+  { ep: 100, ar: "أستا ويونو ضد ليخت", en: "Asta & Yuno vs Licht" },
   { ep: 49, ar: "أستا ضد فيتو", en: "Asta vs Vetto" },
-  { ep: 63, ar: "يامي ضد ليختي", en: "Yami vs Licht" },
-  { ep: 117, ar: "أستا ويونو ضد ليختي", en: "Asta & Yuno vs Licht" },
-  { ep: 157, ar: "أستا ضد داتي (الشيطان)", en: "Asta vs Dante" },
-  { ep: 170, ar: "أستا ويامي في وجه الشيطان", en: "Asta & Yami vs Devil" },
+  { ep: 35, ar: "يامي ضد ليخت", en: "Yami vs Licht" },
+  { ep: 119, ar: "المعركة ضد زاغريد", en: "The battle against Zagred" },
+  { ep: 167, ar: "أستا ويامي ضد دانتي", en: "Asta & Yami vs Dante" },
+  { ep: 170, ar: "أستا ضد ليبي", en: "Asta vs Liebe" },
 ];
 
 export const CHARACTERS = [
