@@ -3,12 +3,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ARCS, EPISODES, SAMPLE_VIDEO, TOTAL_EPISODES, type ArcId } from "@/lib/anime-data";
 import { useLang } from "@/lib/i18n";
 
-type Search = { ep: number; arc?: ArcId | "all" };
+type Search = { ep: number; arc?: ArcId | "all" | undefined };
 
 export const Route = createFileRoute("/watch")({
   validateSearch: (s: Record<string, unknown>): Search => {
-    const ep = Math.min(TOTAL_EPISODES, Math.max(1, Number(s.ep) || 1));
-    const arc = typeof s.arc === "string" ? (s.arc as ArcId) : undefined;
+    const ep = Math.min(TOTAL_EPISODES, Math.max(1, Number(s["ep"]) || 1));
+    const arc = typeof s["arc"] === "string" ? (s["arc"] as ArcId) : undefined;
     return { ep, arc };
   },
   head: () => ({
