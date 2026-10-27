@@ -14,6 +14,9 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LangProvider } from "@/lib/i18n";
 import { SiteHeader } from "@/components/SiteHeader";
+import { ProgressProvider } from "@/lib/progress";
+import { MagicAtmosphere } from "@/components/MagicAtmosphere";
+import { Button } from "@/components/ui/button";
 
 function NotFoundComponent() {
   return (
@@ -37,9 +40,9 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold">حدث خطأ · Something went wrong</h1>
-        <button onClick={() => { router.invalidate(); reset(); }} className="btn-hero mt-6">
+        <Button onClick={() => { router.invalidate(); reset(); }} className="mt-6">
           إعادة المحاولة
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -58,7 +61,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Cinzel:wght@600;800&display=swap" },
+       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Cairo:wght@400;500;600;700;800;900&display=swap" },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
@@ -88,11 +91,16 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LangProvider>
+        <ProgressProvider>
         <SiteHeader />
+        <MagicAtmosphere />
         <Outlet />
-        <footer className="border-t py-8 text-center text-xs text-muted-foreground">
-          EVN ANIME · ☘ · Black Clover fan platform
+        <footer className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 border-t px-6 py-8 text-xs text-muted-foreground md:px-10">
+          <span className="font-display text-lg text-foreground" dir="ltr">EVN<span className="text-primary">.</span> ANIME</span>
+          <span>Black Clover · ファンサイト · Fan-made, not affiliated</span>
+          <span dir="ltr">© EVN ANIME 2026</span>
         </footer>
+        </ProgressProvider>
       </LangProvider>
     </QueryClientProvider>
   );

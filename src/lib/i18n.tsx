@@ -9,15 +9,19 @@ const Ctx = createContext<{ lang: Lang; toggle: () => void; t: (ar: string, en: 
 
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>("ar");
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    const saved = localStorage.getItem("evn-lang");
-    if (saved === "en" || saved === "ar") setLang(saved);
+    try {
+      const saved = localStorage.getItem("evn-lang");
+      if (saved === "en" || saved === "ar") setLang(saved);
+    } catch { /* Use Arabic if storage is unavailable. */ }
+    setLoaded(true);
   }, []);
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    localStorage.setItem("evn-lang", lang);
-  }, [lang]);
+    if (loaded) { try { localStorage.setItem("evn-lang", lang); } catch { /* Language remains available for this session. */ } }
+  }, [lang, loaded]);
   return (
     <Ctx.Provider
       value={{ lang, toggle: () => setLang((l) => (l === "ar" ? "en" : "ar")), t: (ar, en) => (lang === "ar" ? ar : en) }}
