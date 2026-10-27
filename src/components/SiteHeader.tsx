@@ -14,7 +14,7 @@ export function SiteHeader() {
           <Link to="/" className="nav-link" activeOptions={{ exact: true }} activeProps={{ className: "nav-link-active" }}>
             {t("الرئيسية", "Home")}
           </Link>
-          <Link to="/watch" className="nav-link" activeProps={{ className: "nav-link-active" }}>
+          <Link to="/watch" search={{ ep: 1 }} className="nav-link" activeProps={{ className: "nav-link-active" }}>
             {t("الحلقات", "Episodes")}
           </Link>
           <button onClick={toggle} className="rounded-md border px-3 py-1.5 text-xs transition hover:border-primary">
