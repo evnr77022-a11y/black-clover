@@ -13,3 +13,5 @@
 - Keep episode metadata and supplied embed URLs in browser-safe static data modules; never resolve or proxy third-party protected streams.
 - Store viewing progress and favorites locally through the shared progress provider because this experience explicitly requests device-local ranks; embedded players cannot report completion, so users mark watched episodes themselves.
 - Use CSS perspective for the stylized grimoire and a lightweight 2D canvas for embers; avoid a heavyweight 3D renderer for a decorative book transition.
+- Keep season-local episode numbers and progress separate, migrating legacy season-one data; restore browsing preferences only after local storage hydration.
+- Accept player timeUpdate messages only from the mounted iframe window and its exact source origin; reject invalid times and never invent unsupported seek/capture commands.

@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowUpRight, Play, Shield, Sword, Quote, Check, Bookmark } 
 import { ARCS, BATTLES, CHARACTERS } from "@/lib/anime-data";
 import { useLang } from "@/lib/i18n";
 import { ART, PORTRAITS } from "@/lib/artwork";
-import { rankFor, useProgress } from "@/lib/progress";
+import { formatTime, timeKey, rankFor, useProgress } from "@/lib/progress";
 import { Button } from "@/components/ui/button";
 import { Grimoire } from "@/components/Grimoire";
 
@@ -44,7 +44,7 @@ function Index() {
   const [quote, setQuote] = useState(0);
   const rank = rankFor(progress.watched.length);
   useEffect(() => { setQuote(Math.floor(Date.now() / 86400000) % QUOTES.length); }, []);
-  const enter = useCallback(() => { void navigate({ to:"/watch", search:{ ep:progress.lastEpisode } }); }, [navigate,progress.lastEpisode]);
+  const enter = useCallback(() => { void navigate({ to:"/watch", search:{ ep:progress.lastEpisode, season:progress.lastSeason } }); }, [navigate,progress.lastEpisode,progress.lastSeason]);
   const q = QUOTES[quote] ?? QUOTES[0];
   return <main>
     <section className="home-hero">
@@ -66,6 +66,8 @@ function Index() {
       <div className="absolute -bottom-48 pointer-events-none lg:hidden"><Grimoire activated={opening} onOpen={enter}/></div>
     </section>
 
+    {progress.hasVisited && <section className="content-section flex flex-wrap items-center justify-between gap-4 border-b py-6!"><div><p className="text-xs text-primary">{t("آخر محطة في رحلتك", "Your last stop")}</p><p className="mt-2 text-sm font-bold">{t("الموسم", "Season")} {progress.lastSeason} · {t("الحلقة", "Episode")} {progress.lastEpisode}{(progress.timestamps[timeKey(progress.lastSeason,progress.lastEpisode)] ?? 0)>0 && <span className="ms-3 text-muted-foreground" dir="ltr">{formatTime(progress.timestamps[timeKey(progress.lastSeason,progress.lastEpisode)] ?? 0)}</span>}</p></div><Button asChild><Link to="/watch" search={{ep:progress.lastEpisode,season:progress.lastSeason}}><Play/>{t("أكمل رحلتك", "Continue your journey")}</Link></Button></section>}
+    <section className="content-section flex flex-wrap items-center justify-between gap-4 border-b py-6!"><div><p className="font-display text-xs text-primary">NEW CHAPTER</p><h2 className="mt-2 text-xl font-bold">{t("الموسم الثاني", "Season two")}</h2><p className="mt-1 text-xs text-muted-foreground">{t("٤ حلقات مضافة من روابطك", "4 episodes from your supplied links")}</p></div><Button asChild variant="outline"><Link to="/watch" search={{ep:1,season:2}}>{t("حلقات الموسم الثاني", "Season two episodes")}<ArrowUpRight/></Link></Button></section>
     <section id="arcs" className="content-section">
       <div className="section-heading"><Heading ar="فصول الحكاية" en="Story arcs" number="01"/><Button asChild variant="link" className="text-xs text-muted-foreground"><Link to="/watch" search={{ep:1}}>{t("كل الحلقات", "All episodes")}<ArrowUpRight/></Link></Button></div>
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{ARCS.map((arc,i) => <Link key={arc.id} className="arc-card" to="/watch" search={{ep:arc.from,arc:arc.id}}><img src={PORTRAITS[["asta","noelle","yuno","yami"][i] ?? "asta"] ?? ART.hero} alt={t(arc.ar,arc.en)} loading="lazy"/><span className="arc-number">CHAPTER 0{i+1}</span><div className="arc-text"><p className="mb-2 text-[10px] text-primary">{t("الحلقات", "EPISODES")} {arc.from} — {arc.to}</p><h3 className="text-base font-bold">{t(arc.ar,arc.en)}</h3></div></Link>)}</div>

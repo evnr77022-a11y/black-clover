@@ -20,7 +20,7 @@ export function SiteHeader() {
           <Link to="/" className="nav-link" activeOptions={{ exact: true }} activeProps={{ className: "nav-link-active" }}>
             {t("الرئيسية", "Home")}
           </Link>
-          <Link to="/watch" search={{ ep: 1 }} className="nav-link" activeProps={{ className: "nav-link-active" }}>
+          <Link to="/watch" search={{ ep: progress.lastEpisode, season: progress.lastSeason }} className="nav-link" activeProps={{ className: "nav-link-active" }}>
             {t("الحلقات", "Episodes")}
           </Link>
           <a href="/#arcs" className="nav-link hidden md:inline-flex">{t("الأركات", "Story arcs")}</a>
@@ -29,7 +29,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-4">
           <span className="hidden items-center gap-2 text-xs text-muted-foreground xl:flex"><Shield className="size-4 text-primary"/>{t(rank.ar, rank.en)}</span>
           <Button onClick={toggle} variant="ghost" size="sm" className="gap-1" aria-label={t("English language", "اللغة العربية")}><Languages className="size-4"/><span>{lang === "ar" ? "EN" : "عربي"}</span></Button>
-          <Button asChild className="hidden md:inline-flex" size="sm"><Link to="/watch" search={{ ep: progress.lastEpisode }}>{t("شاهد الآن", "Watch now")}<ArrowUpRight/></Link></Button>
+          <Button asChild className="hidden md:inline-flex" size="sm"><Link to="/watch" search={{ ep: progress.lastEpisode, season: progress.lastSeason }}>{t("أكمل المشاهدة", "Continue watching")}<ArrowUpRight/></Link></Button>
         </div>
       </div>
     </header>

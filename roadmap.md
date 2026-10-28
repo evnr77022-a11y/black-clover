@@ -5,3 +5,8 @@
 - [x] Rectangular episode browser, watch controls, local ranks and favorites
 - [x] Tests and desktop/mobile interaction verification
 - [ ] Reliable episode playback — supplied third-party player reports a video loading error; requires working source links.
+- [ ] Restore last episode, season and episode-browser preferences without resetting existing progress
+- [ ] Add the four supplied season-two episodes with independent watched/favorite lists
+- [ ] Add "watched up to here" with undo, next-unwatched shortcut and improved episode browser
+- [ ] Verify whether embedded players support time resume, 4:50 thumbnails and intro/recap seeking; implement only real supported controls
+- [ ] Test persistence, season boundaries and bulk marking through the UI
