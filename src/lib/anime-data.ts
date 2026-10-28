@@ -1,5 +1,9 @@
 import sources from "@/lib/episode-sources.json";
 import titles from "@/lib/episode-titles.json";
+import seasonTwoSources from "@/lib/season-two-sources.json";
+export type Season = 1 | 2;
+export type Episode = { number: number; season: Season; arc: ArcId; title: string; url?: string };
+export const seasonSize = (season: Season) => season === 2 ? 4 : 170;
 export type ArcId = "exam" | "seabed" | "elf" | "heart-spade" | "other";
 
 export const ARCS: { id: Exclude<ArcId, "other">; ar: string; en: string; from: number; to: number }[] = [
@@ -15,12 +19,16 @@ export function arcOf(ep: number): ArcId {
   return ARCS.find((a) => ep >= a.from && ep <= a.to)?.id ?? "other";
 }
 
-export const EPISODES = Array.from({ length: TOTAL_EPISODES }, (_, i) => ({
+export const EPISODES: Episode[] = Array.from({ length: TOTAL_EPISODES }, (_, i) => ({
   number: i + 1,
+  season: 1,
   arc: arcOf(i + 1),
   title: titles.find((row) => row.number === i + 1)?.title ?? "Black Clover",
   url: sources.find((row) => row.number === i + 1)?.url,
 }));
+// The uploaded "season two" labels are preserved; no unverified release titles are invented.
+export const SEASON_TWO_EPISODES: Episode[] = seasonTwoSources.map((row) => ({ ...row, season: 2, arc: "other", title: `Black Clover · ${row.number}` }));
+export const episodesFor = (season: Season) => season === 2 ? SEASON_TWO_EPISODES : EPISODES;
 
 export const BATTLES = [
   { ep: 100, ar: "أستا ويونو ضد ليخت", en: "Asta & Yuno vs Licht" },
