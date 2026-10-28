@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { EPISODES } from "@/lib/anime-data";
-import { normalizeEpisode, rankFor, readProgress, toggleEpisode } from "@/lib/progress";
+import { EPISODES, SEASON_TWO_EPISODES } from "@/lib/anime-data";
+import { EMPTY_PROGRESS, normalizeEpisode, rankFor, readProgress, toggleEpisode, watchedThrough } from "@/lib/progress";
+import { playbackTimeFromMessage } from "@/lib/player-events";
 
 describe("Black Clover episode catalog", () => {
   it("contains the supplied 170 sequential episode sources", () => {
@@ -29,6 +30,31 @@ describe("Device-local Magic Knight progress", () => {
   });
   it("recovers from corrupted storage and discards out-of-range episode entries", () => {
     expect(readProgress("bad").watched).toEqual([]);
-    expect(readProgress('{"watched":[1,1,171],"favorites":[170,0],"lastEpisode":500}')).toEqual({watched:[1],favorites:[170],lastEpisode:170});
+    expect(readProgress('{"watched":[1,1,171],"favorites":[170,0],"lastEpisode":500}')).toEqual({...EMPTY_PROGRESS,watched:[1],favorites:[170],lastEpisode:170,hasVisited:true});
+  });
+  it("marks all episodes up to and including the current one without losing later watched episodes",()=>{
+    expect(watchedThrough([2,10],5)).toEqual([1,2,3,4,5,10]);
+    expect(watchedThrough([1,2,3,4,5],5)).toEqual([1,2,3,4,5]);
+  });
+  it("keeps season two limited to the four supplied episodes",()=>{
+    expect(SEASON_TWO_EPISODES.map(e=>e.number)).toEqual([1,2,3,4]);
+    expect(new Set(SEASON_TWO_EPISODES.map(e=>e.url)).size).toBe(4);
+    expect(SEASON_TWO_EPISODES[0]?.url).toBe("https://animeslayer.to/assets/player/__wit.php?idHD=CQUDCEICHh4zJRMHEgofS1BfKS0EXxkdRRdnWCQlDl5GSgEJAx5xbgwBQw");
+    expect(normalizeEpisode(5,2)).toBe(4);
+    expect(watchedThrough([],9,2)).toEqual([1,2,3,4]);
+  });
+  it("preserves old season-one progress and restores independent season-two progress and preferences",()=>{
+    const saved=readProgress('{"watched":[52],"favorites":[1],"lastEpisode":3,"lastSeason":2,"seasonTwo":{"watched":[1,2],"favorites":[3]},"preferences":{"query":"3","tab":"favorites","cinema":true,"hideSpoilers":true},"timestamps":{"2:3":290,"1:52":92}}');
+    expect(saved.watched).toEqual([52]); expect(saved.seasonTwo).toEqual({watched:[1,2],favorites:[3]});
+    expect(saved.lastSeason).toBe(2);expect(saved.lastEpisode).toBe(3);expect(saved.timestamps["2:3"]).toBe(290);
+    expect(saved.preferences).toEqual({query:"3",tab:"favorites",cinema:true,hideSpoilers:true,arc:"all"});
+  });
+  it("accepts time updates only from the exact mounted player origin and window",()=>{
+    const data={event:"timeUpdate",currentTime:290};
+    expect(playbackTimeFromMessage(data,"https://animeslayer.to","https://animeslayer.to",true)).toBe(290);
+    expect(playbackTimeFromMessage(data,"https://evil.example","https://animeslayer.to",true)).toBeNull();
+    expect(playbackTimeFromMessage(data,"https://animeslayer.to","https://animeslayer.to",false)).toBeNull();
+    expect(playbackTimeFromMessage({...data,currentTime:Infinity},"https://animeslayer.to","https://animeslayer.to",true)).toBeNull();
+    expect(playbackTimeFromMessage({...data,currentTime:-1},"https://animeslayer.to","https://animeslayer.to",true)).toBeNull();
   });
 });
