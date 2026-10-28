@@ -9,7 +9,7 @@ import { ART } from "@/lib/artwork";
 
 type Search = { ep: number; arc?: ArcId | "all" };
 export const Route = createFileRoute("/watch")({
- validateSearch: (s: Record<string,unknown>): Search => ({ep:normalizeEpisode(s.ep),arc: typeof s.arc==="string" && ["all","other",...ARCS.map(a=>a.id)].includes(s.arc) ? s.arc as ArcId|"all" : "all"}),
+ validateSearch: (s: Record<string,unknown>): Search => ({ep:normalizeEpisode(s["ep"]),arc: typeof s["arc"]==="string" && ["all","other",...ARCS.map(a=>a.id)].includes(s["arc"]) ? s["arc"] as ArcId|"all" : "all"}),
  head: ({match}) => ({meta:[
   {title:`بلاك كلوفر — الحلقة ${match.search.ep} | EVN ANIME`},
   {name:"description",content:"حلقات بلاك كلوفر الـ170 بعناوينها، مع تصفية الأركات والمفضلة وسجل المشاهدة."},
