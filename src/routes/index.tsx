@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
 const QUOTES = [
   { ar: "عدم الاستسلام هو سحري!", en: "My magic is never giving up!", who: "أستا", whoEn: "Asta" },
   { ar: "تجاوز حدودك. هنا، الآن.", en: "Surpass your limits. Right here. Right now.", who: "يامي سوكيهيرو", whoEn: "Yami Sukehiro" },
-];
+] as const;
 function Heading({ ar, en, number }: { ar: string; en: string; number: string }) {
   const { t } = useLang();
   return <h2><span className="section-index">{number} /</span>{t(ar, en)}</h2>;
