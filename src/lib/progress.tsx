@@ -3,8 +3,11 @@ import { seasonSize, type Season } from "@/lib/anime-data";
 
 export type BrowserPreferences = { query: string; arc: string; tab: "all" | "favorites" | "unwatched"; cinema: boolean; hideSpoilers: boolean };
 export const DEFAULT_PREFERENCES: BrowserPreferences = { query: "", arc: "all", tab: "all", cinema: false, hideSpoilers: false };
-export type Progress = { watched: number[]; favorites: number[]; lastEpisode: number; lastSeason: Season; seasonTwo: { watched: number[]; favorites: number[] }; preferences: BrowserPreferences; hasVisited: boolean };
-export const EMPTY_PROGRESS: Progress = { watched: [], favorites: [], lastEpisode: 1, lastSeason: 1, seasonTwo: { watched: [], favorites: [] }, preferences: DEFAULT_PREFERENCES, hasVisited: false };
+export type Progress = { watched: number[]; favorites: number[]; lastEpisode: number; lastSeason: Season; seasonTwo: { watched: number[]; favorites: number[] }; preferences: BrowserPreferences; hasVisited: boolean; timestamps: Record<string,number> };
+export const EMPTY_PROGRESS: Progress = { watched: [], favorites: [], lastEpisode: 1, lastSeason: 1, seasonTwo: { watched: [], favorites: [] }, preferences: DEFAULT_PREFERENCES, hasVisited: false, timestamps:{} };
+export const timeKey = (season:Season, ep:number) => `${season}:${ep}`;
+export const formatTime = (seconds:number) => `${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,"0")}`;
+export function validPlaybackTime(value:unknown):value is number { return typeof value === "number" && Number.isFinite(value) && value >= 0 && value <= 86400; }
 export function normalizeEpisode(value: unknown, season: Season = 1) {
  const n = Number(value);
  return Number.isFinite(n) ? Math.max(1, Math.min(seasonSize(season), Math.floor(n))) : 1;
@@ -30,9 +33,11 @@ export function readProgress(raw: string | null): Progress {
   const clean = (v: unknown, size: number) => Array.isArray(v) ? [...new Set(v.filter((n): n is number => Number.isInteger(n) && n >= 1 && n <= size))] : [];
   const season = data.lastSeason === 2 ? 2 : 1;
   const prefs = data.preferences ?? {};
+  const timestamps:Record<string,number> = {};
+  if(data.timestamps && typeof data.timestamps === "object") for(const [key,value] of Object.entries(data.timestamps)) { if(/^(1:([1-9]|[1-9]\d|1[0-6]\d|170)|2:[1-4])$/.test(key) && validPlaybackTime(value)) timestamps[key]=value; }
   return { watched:clean(data.watched,170), favorites:clean(data.favorites,170), lastEpisode:normalizeEpisode(data.lastEpisode,season), lastSeason:season,
    seasonTwo:{ watched:clean(data.seasonTwo?.watched,4), favorites:clean(data.seasonTwo?.favorites,4) },
-   hasVisited: data.hasVisited === true || Number(data.lastEpisode) > 1,
+   hasVisited: data.hasVisited === true || Number(data.lastEpisode) > 1, timestamps,
    preferences:{ query:typeof prefs.query === "string" ? prefs.query.slice(0,200) : "", arc: typeof prefs.arc === "string" ? prefs.arc : "all", tab:["all","favorites","unwatched"].includes(prefs.tab) ? prefs.tab : "all", cinema:prefs.cinema === true, hideSpoilers:prefs.hideSpoilers === true },
   };
  } catch { return EMPTY_PROGRESS; }
@@ -42,6 +47,7 @@ const ProgressContext = createContext({ progress: EMPTY_PROGRESS, ready:false,
  toggleWatched: (_ep: number, _season: Season = 1) => {}, toggleFavorite: (_ep: number, _season: Season = 1) => {},
  visit: (_ep: number, _season: Season = 1) => {}, markThrough: (_ep: number, _season: Season = 1) => {},
  undoMark: () => {}, canUndo:false, setPreferences: (_prefs: Partial<BrowserPreferences>) => {},
+ saveTime: (_ep:number,_season:Season,_seconds:number) => {},
 });
 export function ProgressProvider({children}:{children:ReactNode}) {
  const [progress,setProgress] = useState<Progress>(EMPTY_PROGRESS);
@@ -55,7 +61,8 @@ export function ProgressProvider({children}:{children:ReactNode}) {
  const markThrough = useCallback((ep:number,season:Season=1)=>{setUndo({season,watched:[...seasonProgress(progress,season).watched]});setProgress(p=>season===1 ? {...p,watched:watchedThrough(p.watched,ep)} : {...p,seasonTwo:{...p.seasonTwo,watched:watchedThrough(p.seasonTwo.watched,ep,2)}});},[progress]);
  const undoMark = useCallback(()=>{if(!undo)return;setProgress(p=>undo.season===1?{...p,watched:undo.watched}:{...p,seasonTwo:{...p.seasonTwo,watched:undo.watched}});setUndo(null);},[undo]);
  const setPreferences = useCallback((prefs:Partial<BrowserPreferences>)=>setProgress(p=>({...p,preferences:{...p.preferences,...prefs}})),[]);
- const value=useMemo(()=>({progress,ready,visit,toggleWatched,toggleFavorite,markThrough,undoMark,canUndo:undo!==null,setPreferences}),[progress,ready,visit,toggleWatched,toggleFavorite,markThrough,undoMark,undo,setPreferences]);
+ const saveTime = useCallback((ep:number,season:Season,seconds:number)=>{if(!validPlaybackTime(seconds))return;setProgress(p=>({...p,timestamps:{...p.timestamps,[timeKey(season,ep)]:Math.floor(seconds)}}));},[]);
+ const value=useMemo(()=>({progress,ready,visit,toggleWatched,toggleFavorite,markThrough,undoMark,canUndo:undo!==null,setPreferences,saveTime}),[progress,ready,visit,toggleWatched,toggleFavorite,markThrough,undoMark,undo,setPreferences,saveTime]);
  return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;
 }
 export const useProgress=()=>useContext(ProgressContext);
