@@ -5,8 +5,11 @@
 - [x] Rectangular episode browser, watch controls, local ranks and favorites
 - [x] Tests and desktop/mobile interaction verification
 - [ ] Reliable episode playback — supplied third-party player reports a video loading error; requires working source links.
-- [ ] Restore last episode, season and episode-browser preferences without resetting existing progress
-- [ ] Add the four supplied season-two episodes with independent watched/favorite lists
-- [ ] Add "watched up to here" with undo, next-unwatched shortcut and improved episode browser
-- [ ] Verify whether embedded players support time resume, 4:50 thumbnails and intro/recap seeking; implement only real supported controls
-- [ ] Test persistence, season boundaries and bulk marking through the UI
+- [x] Restore last episode, season and episode-browser preferences without resetting existing progress
+- [x] Add the four supplied season-two episodes with independent watched/favorite lists
+- [x] Add "watched up to here" with undo, next-unwatched shortcut and improved episode browser
+- [x] Verify embedded player interface: timeUpdate can save timestamps; no inbound seek or capture API. Synthetic iframe message validation passed; real playback time remains unverified because the source fails to play.
+- [x] Test persistence, season boundaries and bulk marking through the UI
+- [ ] Automatic timestamp resume and intro/recap seeking — blocked by the source's missing seek API; needs controllable authorized video and accurate skip boundaries.
+- [ ] Saved actual thumbnails at 4:50 — blocked by missing source capture/CORS support; needs accessible authorized video or supplied real frames.
+- [x] Suggest additional feature ideas for the user to choose from

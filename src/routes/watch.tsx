@@ -7,7 +7,7 @@ import { formatTime, timeKey, normalizeEpisode, rankFor, seasonProgress, useProg
 import { Button } from "@/components/ui/button";
 import { EpisodePlayer } from "@/components/EpisodePlayer";
 
-type Search = { ep?: number; season?: Season; arc?: ArcId | "all" };
+type Search = { ep?: number | undefined; season?: Season | undefined; arc?: ArcId | "all" | undefined };
 export const Route = createFileRoute("/watch")({
  validateSearch: (s:Record<string,unknown>):Search => {
   const season=s["season"]===undefined ? undefined : Number(s["season"])===2 ? 2 : 1;
