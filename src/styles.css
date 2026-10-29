@@ -92,6 +92,10 @@
 .player-cover { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:20px; }
 .player-cover img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.25; }
 .player-cover>*:not(img) { position:relative; }
+progress { appearance:none; border:none; background:var(--secondary); color:var(--primary); }
+progress::-webkit-progress-bar { background:var(--secondary); }
+progress::-webkit-progress-value { background:var(--primary); }
+progress::-moz-progress-bar { background:var(--primary); }
 @media (max-width:767px) {
  .site-header>div {height:68px; padding-inline:16px; gap:4px;}
  .site-header nav {font-size:11px;}
