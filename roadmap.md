@@ -12,3 +12,4 @@
 - [x] Test persistence, season boundaries and bulk marking through the UI
 - [ ] Automatic timestamp resume and intro/recap seeking — blocked by the source's missing seek API; needs controllable authorized video and accurate skip boundaries.
 - [ ] Saved actual thumbnails at 4:50 — blocked by missing source capture/CORS support; needs accessible authorized video or supplied real frames.
+- [x] Suggest additional feature ideas for the user to choose from
