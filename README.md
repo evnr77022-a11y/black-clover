@@ -1,7 +1,5 @@
 # Black Clover
 
-اول شي تكلم عربي ثاني شي
-Please build a premium, immersive dark-themed web platform dedicated entirely to "Black Clover" anime, called "EVN ANIME". 
 
 GitHub Repository Context: https://github.com/evnr7022-a11y/Evn_Anime
 
