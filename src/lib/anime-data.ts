@@ -2,7 +2,7 @@ import sources from "@/lib/episode-sources.json";
 import titles from "@/lib/episode-titles.json";
 import seasonTwoSources from "@/lib/season-two-sources.json";
 export type Season = 1 | 2;
-export type Episode = { number: number; season: Season; arc: ArcId; title: string; url?: string };
+export type Episode = { number: number; season: Season; arc: ArcId; title: string; url?: string | undefined };
 export const seasonSize = (season: Season) => season === 2 ? 4 : 170;
 export type ArcId = "exam" | "seabed" | "elf" | "heart-spade" | "other";
 
